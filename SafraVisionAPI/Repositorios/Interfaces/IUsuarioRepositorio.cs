@@ -2,7 +2,7 @@
 
 namespace SafraVisionAPI.Repositorios.Interfaces
 {
-    public interface IUsuarioRepositorio
+    public interface IUsuarioRepositorio 
     {
         Task<List<UsuarioModel>> BuscarTodosUsuarios();
         Task<UsuarioModel> BuscarUsuarioPorId(int id);

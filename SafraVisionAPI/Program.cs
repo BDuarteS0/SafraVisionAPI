@@ -13,6 +13,10 @@ namespace SafraVisionAPI
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddEntityFrameworkSqlServer();
+            
+                
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

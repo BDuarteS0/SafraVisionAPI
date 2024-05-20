@@ -1,8 +1,8 @@
 ﻿namespace SafraVisionAPI.Models
 {
-    public class UsuarioModel
+    public class UsuarioModel : PessoaModel
     {
-        public int id { get; set; }
+        
         public String? senha { get; set; }
     }
 }
