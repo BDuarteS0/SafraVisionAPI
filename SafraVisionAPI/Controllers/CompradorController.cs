@@ -1,18 +1,18 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SafraVisionAPI.Models;
 
 namespace SafraVisionAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsuarioController : ControllerBase
+    public class CompradorController : ControllerBase
     {
         [HttpGet]
-        public ActionResult<List<Models.UsuarioModel>> BuscarTodosUsuarios()
+        public ActionResult<List<CompradorModel>> BuscarTodosCompradores()
         {
-
             return Ok();
         }
-
-    }
+    } 
 }
+ 

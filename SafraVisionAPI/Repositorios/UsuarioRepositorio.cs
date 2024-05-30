@@ -12,25 +12,27 @@ namespace SafraVisionAPI.Repositorios
         {
             _dbContext = safraVisionDBContext;
         }
-
+        //BUSCA E RETORNA UMA LISTA TODOS OS USUÁRIOS DO SISTEMA 
         public async Task<List<UsuarioModel>> BuscarTodosUsuarios()
         {
             return await _dbContext.Usuario.ToListAsync();
         }
 
-
-        public Task<UsuarioModel> BuscarUsuarioPorId(int id)
+        //BUSCA E RETORNA APENAS UM USUÁRIO ESPECÍFICO
+        public async Task<UsuarioModel> BuscarUsuarioPorId(int id)
         {
-            return _dbContext.Usuario.FirstOrDefaultAsync(x => x.id == id);
+            return await _dbContext.Usuario.FirstOrDefaultAsync(x => x.idPessoa == id);
         }
 
-
+        //ADICIONA UM NOVO USUÁRIO NO SISTEMA
         public async Task<UsuarioModel> InserirUsuario(UsuarioModel usuario)
         {
             await _dbContext.Usuario.AddAsync(usuario);
-            _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
             return usuario;
         }
+
+        //ATUALIZA OS DADOS DE UM USUÁRIO DO SISTEMA
         public async Task<UsuarioModel> AtualizarUsuario(UsuarioModel usuario, int id)
         {
             UsuarioModel usuarioPorID = await BuscarUsuarioPorId(id);
@@ -38,6 +40,7 @@ namespace SafraVisionAPI.Repositorios
             {
                 throw new Exception("Usuario não encontrado");
             }
+            usuarioPorID.email = usuario.email;
             usuarioPorID.senha= usuario.senha;
             
             _dbContext.Usuario.Update(usuarioPorID);
@@ -45,6 +48,7 @@ namespace SafraVisionAPI.Repositorios
             return usuarioPorID;
         }
 
+        //DELETA UM USUÁRIO ESPECÍFICO DO SISTEMA
         public async Task<bool> DeletarUsuario(int id)
         {
             UsuarioModel usuarioPorID = await BuscarUsuarioPorId(id);
