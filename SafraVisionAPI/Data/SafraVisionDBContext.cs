@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SafraVisionAPI.Data.Map;
 using SafraVisionAPI.Models;
 
 namespace SafraVisionAPI.Data
@@ -14,7 +15,12 @@ namespace SafraVisionAPI.Data
         public DbSet<UsuarioModel> Usuario { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new PessoaMap());
+            modelBuilder.ApplyConfiguration(new UsuarioMap());
+
             base.OnModelCreating(modelBuilder);
+            
+            
         }
     }
 }

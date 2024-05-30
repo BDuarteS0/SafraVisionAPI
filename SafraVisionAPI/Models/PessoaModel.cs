@@ -2,8 +2,8 @@
 {
     public class PessoaModel
     {
-        public int id { get; set; }
-        public String? nome { get; set; }
-        public String? email { get; set; }
+        public int idPessoa { get; set; }
+        public String? nomePessoa { get; set; }
+
     }
 }
