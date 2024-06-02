@@ -13,10 +13,13 @@ namespace SafraVisionAPI.Data
         }
         public DbSet<PessoaModel> Pessoa { get; set; }
         public DbSet<UsuarioModel> Usuario { get; set; }
+        public DbSet<VendaModel> Venda { get; set; }
+        public DbSet<CompradorModel> Comprador { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new PessoaMap());
             modelBuilder.ApplyConfiguration(new UsuarioMap());
+            modelBuilder.ApplyConfiguration(new VendaMap());
 
             base.OnModelCreating(modelBuilder);
             

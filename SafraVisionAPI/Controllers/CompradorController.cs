@@ -8,7 +8,7 @@ namespace SafraVisionAPI.Controllers
     [ApiController]
     public class CompradorController : ControllerBase
     {
-        [HttpGet]
+        [HttpGet("{BuscarTodosCommpradores}")]
         public ActionResult<List<CompradorModel>> BuscarTodosCompradores()
         {
             return Ok();
