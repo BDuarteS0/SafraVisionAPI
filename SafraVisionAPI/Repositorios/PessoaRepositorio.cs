@@ -19,9 +19,9 @@ namespace SafraVisionAPI.Repositorios
         }
 
         //BUSCA E RETORNA APENAS UM USUÁRIO ESPECÍFICO
-        public async Task<PessoaModel> BuscarPessoaPorId(int id)
+        public async Task<PessoaModel> BuscarPessoaPorId(int idPessoa)
         {
-            return await _dbContext.Pessoa.FirstOrDefaultAsync(x => x.idPessoa == id);
+            return await _dbContext.Pessoa.FirstOrDefaultAsync(x => x.idPessoa == idPessoa);
         }
 
         //ADICIONA UM NOVO USUÁRIO NO SISTEMA
@@ -33,9 +33,9 @@ namespace SafraVisionAPI.Repositorios
         }
 
         //ATUALIZA OS DADOS DE UM USUÁRIO DO SISTEMA
-         public async Task<PessoaModel> AtualizarPessoa(PessoaModel pessoa, int id)
+         public async Task<PessoaModel> AtualizarPessoa(PessoaModel pessoa, int idPessoa)
         {
-            PessoaModel pessoaPorID = await BuscarPessoaPorId(id);
+            PessoaModel pessoaPorID = await BuscarPessoaPorId(idPessoa);
             if(pessoaPorID == null)
             {
                 throw new Exception("Usuario não encontrado");
@@ -49,9 +49,9 @@ namespace SafraVisionAPI.Repositorios
         }
 
         //DELETA UM USUÁRIO ESPECÍFICO DO SISTEMA
-        public async Task<bool> DeletarPessoa(int id)
+        public async Task<bool> DeletarPessoa(int idPessoa)
         {
-            PessoaModel pessoaPorId = await BuscarPessoaPorId(id);
+            PessoaModel pessoaPorId = await BuscarPessoaPorId(idPessoa);
             if (pessoaPorId == null)
             {
                 throw new Exception("Usuario não encontrado");

@@ -6,17 +6,21 @@ namespace SafraVisionAPI.Data
 {
     public class SafraVisionDBContext : DbContext
     {
-        public SafraVisionDBContext(DbContextOptions<SafraVisionDBContext>options)
+        public SafraVisionDBContext(DbContextOptions<SafraVisionDBContext>options)  
             : base(options)
         {
             
         }
         public DbSet<PessoaModel> Pessoa { get; set; }
         public DbSet<UsuarioModel> Usuario { get; set; }
+        public DbSet<VendaModel> Venda { get; set; }
+        public DbSet<CompradorModel> Comprador { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new PessoaMap());
             modelBuilder.ApplyConfiguration(new UsuarioMap());
+            modelBuilder.ApplyConfiguration(new VendaMap());
+            modelBuilder.ApplyConfiguration(new CompradorMap());
 
             base.OnModelCreating(modelBuilder);
             

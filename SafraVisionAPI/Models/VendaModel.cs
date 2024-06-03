@@ -4,7 +4,7 @@
     {
         public int idVenda { get; set; }
         public double qtdVendida { get; set; }
-        public DateOnly dataVenda { get; set; }
+        public DateTime dataVenda { get; set; }
 
     }
 }

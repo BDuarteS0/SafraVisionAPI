@@ -16,17 +16,23 @@ namespace SafraVisionAPI.Controllers
             _pessoaRepositorio = pessoaRepositorio;
         }
 
-        [HttpGet]
+        [HttpGet("{BuscarTodasPessoas}")]
         public async Task<ActionResult<List<PessoaModel>>> BuscarTodasPessoas()
         {
             List<PessoaModel>pessoas = await _pessoaRepositorio.BuscarTodasPessoas();
             return Ok(pessoas);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{idPessoa}")]
         public async Task<ActionResult<PessoaModel>> BuscarPessoaPorId(int idPessoa)
         {
             PessoaModel pessoa = await _pessoaRepositorio.BuscarPessoaPorId(idPessoa);
+            return Ok(pessoa);
+        }
+        [HttpPost]
+        public async Task<ActionResult<PessoaModel>> InserirPessoa([FromBody] PessoaModel pessoaModel)
+        {
+            PessoaModel pessoa = await _pessoaRepositorio.InserirPessoa(pessoaModel);
             return Ok(pessoa);
         }
 
