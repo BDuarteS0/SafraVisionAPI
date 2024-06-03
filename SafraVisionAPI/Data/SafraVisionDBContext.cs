@@ -6,7 +6,7 @@ namespace SafraVisionAPI.Data
 {
     public class SafraVisionDBContext : DbContext
     {
-        public SafraVisionDBContext(DbContextOptions<SafraVisionDBContext>options)
+        public SafraVisionDBContext(DbContextOptions<SafraVisionDBContext>options) 
             : base(options)
         {
             
