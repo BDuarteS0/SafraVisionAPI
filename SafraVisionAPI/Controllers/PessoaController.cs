@@ -30,7 +30,7 @@ namespace SafraVisionAPI.Controllers
             return Ok(pessoa);
         }
         [HttpPost]
-        public async Task<ActionResult<PessoaModel>> Cadastrar([FromBody] PessoaModel pessoaModel)
+        public async Task<ActionResult<PessoaModel>> InserirPessoa([FromBody] PessoaModel pessoaModel)
         {
             PessoaModel pessoa = await _pessoaRepositorio.InserirPessoa(pessoaModel);
             return Ok(pessoa);

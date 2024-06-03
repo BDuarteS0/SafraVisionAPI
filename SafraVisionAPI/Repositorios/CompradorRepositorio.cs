@@ -25,20 +25,37 @@ namespace SafraVisionAPI.Repositorios
         }
 
 
-        public Task<CompradorModel> BuscarCompradorPorId(int idPessoa)
+        public async Task<CompradorModel> BuscarCompradorPorId(int idPessoa)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Comprador.FirstOrDefaultAsync(x => x.idPessoa == idPessoa);
         }
 
-        public Task<CompradorModel> AtualizarComprador(CompradorModel comprador, int idPessoa)
+        public async Task<CompradorModel> AtualizarComprador(CompradorModel comprador, int idPessoa)
         {
-            throw new NotImplementedException();
+            CompradorModel compradorPorId = await BuscarCompradorPorId(idPessoa);
+            if(compradorPorId == null)
+            {
+                throw new Exception("Comprador não encontrado");
+            }
+            comprador.descricao = compradorPorId.descricao;
+            comprador.nomePessoa = comprador.nomePessoa;
+
+            _dbContext.Comprador.Update(compradorPorId);
+            _dbContext.SaveChanges();
+            return compradorPorId;
         }
 
 
-        public Task<bool> DeletarComprador(int idPessoa)
+        public async Task<bool> DeletarComprador(int idPessoa)
         {
-            throw new NotImplementedException();
+            CompradorModel compradorPorId = await BuscarCompradorPorId(idPessoa);
+            if (compradorPorId == null)
+            {
+                throw new Exception("Comprador não encontrado");
+            }
+            _dbContext.Comprador.Remove(compradorPorId);
+            _dbContext.SaveChanges();
+            return true;
         }
 
 

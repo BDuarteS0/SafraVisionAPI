@@ -20,6 +20,7 @@ namespace SafraVisionAPI.Data
             modelBuilder.ApplyConfiguration(new PessoaMap());
             modelBuilder.ApplyConfiguration(new UsuarioMap());
             modelBuilder.ApplyConfiguration(new VendaMap());
+            modelBuilder.ApplyConfiguration(new CompradorMap());
 
             base.OnModelCreating(modelBuilder);
             
