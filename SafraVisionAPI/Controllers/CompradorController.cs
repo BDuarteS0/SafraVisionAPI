@@ -12,6 +12,7 @@ namespace SafraVisionAPI.Controllers
         public ActionResult<List<CompradorModel>> BuscarTodosCompradores()
         {
             return Ok();
+
         }
     } 
 }
