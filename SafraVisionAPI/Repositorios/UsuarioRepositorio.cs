@@ -19,9 +19,9 @@ namespace SafraVisionAPI.Repositorios
         }
 
         //BUSCA E RETORNA APENAS UM USUÁRIO ESPECÍFICO
-        public async Task<UsuarioModel> BuscarUsuarioPorId(int id)
+        public async Task<UsuarioModel> BuscarUsuarioPorId(int idUsuario)
         {
-            return await _dbContext.Usuario.FirstOrDefaultAsync(x => x.idPessoa == id);
+            return await _dbContext.Usuario.FirstOrDefaultAsync(x => x.idUsuario == idUsuario);
         }
 
         //ADICIONA UM NOVO USUÁRIO NO SISTEMA

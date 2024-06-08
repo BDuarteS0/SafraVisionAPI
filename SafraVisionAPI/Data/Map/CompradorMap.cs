@@ -8,6 +8,8 @@ namespace SafraVisionAPI.Data.Map
     {
         public void Configure(EntityTypeBuilder<CompradorModel> builder)
         {
+            builder.HasKey(x => x.idComprador);
+            builder.Property(x => x.nomeComprador).IsRequired().HasMaxLength(255);
             builder.Property(x => x.descricao).IsRequired().HasMaxLength(255);
         }
     }

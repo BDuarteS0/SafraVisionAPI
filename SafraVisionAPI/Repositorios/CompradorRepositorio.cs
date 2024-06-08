@@ -25,9 +25,9 @@ namespace SafraVisionAPI.Repositorios
         }
 
 
-        public async Task<CompradorModel> BuscarCompradorPorId(int idPessoa)
+        public async Task<CompradorModel> BuscarCompradorPorId(int idComprador)
         {
-            return await _dbContext.Comprador.FirstOrDefaultAsync(x => x.idPessoa == idPessoa);
+            return await _dbContext.Comprador.FirstOrDefaultAsync(x => x.idComprador == idComprador);
         }
 
         public async Task<CompradorModel> AtualizarComprador(CompradorModel comprador, int idPessoa)
@@ -38,7 +38,7 @@ namespace SafraVisionAPI.Repositorios
                 throw new Exception("Comprador não encontrado");
             }
             comprador.descricao = compradorPorId.descricao;
-            comprador.nomePessoa = comprador.nomePessoa;
+            comprador.nomeComprador = comprador.nomeComprador;
 
             _dbContext.Comprador.Update(compradorPorId);
             _dbContext.SaveChanges();
