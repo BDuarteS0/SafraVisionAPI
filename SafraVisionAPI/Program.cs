@@ -32,6 +32,7 @@ namespace SafraVisionAPI
             });
             builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
             builder.Services.AddScoped<ICompradorRepositorio, CompradorRepositorio>();
+            builder.Services.AddScoped<IVendaRepositorio, VendaRepositorio>();
 
             var app = builder.Build();
 

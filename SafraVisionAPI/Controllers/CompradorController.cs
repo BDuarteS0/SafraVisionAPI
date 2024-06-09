@@ -36,6 +36,15 @@ namespace SafraVisionAPI.Controllers
             return Ok(comprador);
         
         }
+
+        [HttpPut("AtualizarComprador")]
+        public async Task<ActionResult<CompradorModel>> AtualizarComprador([FromBody]CompradorModel compradorModel, int idComprador)
+        {
+            CompradorModel comprador = await _compradorRepositorio.AtualizarComprador(compradorModel, idComprador);
+            return Ok(comprador);
+        }
+
+
         [HttpDelete("DeletarComprador")]
         public async Task<ActionResult<CompradorModel>> DeletarComprador(int idComprador)
         {

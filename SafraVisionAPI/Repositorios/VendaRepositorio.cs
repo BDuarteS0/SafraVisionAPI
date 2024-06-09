@@ -5,7 +5,7 @@ using SafraVisionAPI.Repositorios.Interfaces;
 
 namespace SafraVisionAPI.Repositorios
 {
-    public class VendaRepositorio : IVendarepositorio   
+    public class VendaRepositorio : IVendaRepositorio   
     {
         private readonly SafraVisionDBContext _dbContext;
         public VendaRepositorio(SafraVisionDBContext safraVisionDBContext)

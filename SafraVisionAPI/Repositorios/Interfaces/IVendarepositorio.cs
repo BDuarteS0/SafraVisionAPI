@@ -2,7 +2,7 @@
 
 namespace SafraVisionAPI.Repositorios.Interfaces
 {
-    public interface IVendarepositorio
+    public interface IVendaRepositorio
     {
         Task<List<VendaModel>> BuscarTodasVendas();
         Task<VendaModel> BuscarVendaPorId(int idVenda);

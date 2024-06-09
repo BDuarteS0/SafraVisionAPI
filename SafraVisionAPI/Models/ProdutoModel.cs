@@ -6,6 +6,7 @@
         public String? nomeProduto { get; set; }
         public String? descricao { get; set; }
         public double preco { get; set; }
-        public int qtdEstoque { get; set; }
+        public double qtdEstoque { get; set; }
     }
 }
+    
