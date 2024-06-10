@@ -37,13 +37,14 @@ namespace SafraVisionAPI.Repositorios
             {
                 throw new Exception("Comprador não encontrado");
             }
-            comprador.descricao = compradorPorId.descricao;
-            comprador.nomeComprador = comprador.nomeComprador;
+            compradorPorId.nomeComprador = comprador.nomeComprador;
+            compradorPorId.descricao = comprador.descricao;
 
             _dbContext.Comprador.Update(compradorPorId);
             _dbContext.SaveChanges();
             return compradorPorId;
         }
+ 
 
 
         public async Task<bool> DeletarComprador(int idPessoa)

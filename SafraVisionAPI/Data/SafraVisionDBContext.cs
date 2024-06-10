@@ -15,12 +15,14 @@ namespace SafraVisionAPI.Data
         public DbSet<UsuarioModel> Usuario { get; set; }
         public DbSet<VendaModel> Venda { get; set; }
         public DbSet<CompradorModel> Comprador { get; set; }
+        public DbSet<ProdutoModel> Produto { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
          
             modelBuilder.ApplyConfiguration(new UsuarioMap());
             modelBuilder.ApplyConfiguration(new VendaMap());
             modelBuilder.ApplyConfiguration(new CompradorMap());
+            modelBuilder.ApplyConfiguration(new ProdutoMap());
 
             base.OnModelCreating(modelBuilder);
             

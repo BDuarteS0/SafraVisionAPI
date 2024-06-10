@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SafraVisionAPI.Migrations
 {
-    public partial class initialDB : Migration
+    public partial class InitialDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -21,6 +21,22 @@ namespace SafraVisionAPI.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Comprador", x => x.idComprador);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Produto",
+                columns: table => new
+                {
+                    idProduto = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    nomeProduto = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    descricao = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    preco = table.Column<double>(type: "float", nullable: false),
+                    qtdEstoque = table.Column<double>(type: "float", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Produto", x => x.idProduto);
                 });
 
             migrationBuilder.CreateTable(
@@ -56,6 +72,9 @@ namespace SafraVisionAPI.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Comprador");
+
+            migrationBuilder.DropTable(
+                name: "Produto");
 
             migrationBuilder.DropTable(
                 name: "Usuario");

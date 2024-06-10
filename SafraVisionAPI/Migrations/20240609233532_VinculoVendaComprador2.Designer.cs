@@ -12,8 +12,8 @@ using SafraVisionAPI.Data;
 namespace SafraVisionAPI.Migrations
 {
     [DbContext(typeof(SafraVisionDBContext))]
-    [Migration("20240608224431_initialDB")]
-    partial class initialDB
+    [Migration("20240609233532_VinculoVendaComprador2")]
+    partial class VinculoVendaComprador2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -45,6 +45,35 @@ namespace SafraVisionAPI.Migrations
                     b.HasKey("idComprador");
 
                     b.ToTable("Comprador");
+                });
+
+            modelBuilder.Entity("SafraVisionAPI.Models.ProdutoModel", b =>
+                {
+                    b.Property<int>("idProduto")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idProduto"), 1L, 1);
+
+                    b.Property<string>("descricao")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("nomeProduto")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<double>("preco")
+                        .HasColumnType("float");
+
+                    b.Property<double>("qtdEstoque")
+                        .HasColumnType("float");
+
+                    b.HasKey("idProduto");
+
+                    b.ToTable("Produto");
                 });
 
             modelBuilder.Entity("SafraVisionAPI.Models.UsuarioModel", b =>
@@ -81,13 +110,30 @@ namespace SafraVisionAPI.Migrations
                     b.Property<DateTime>("dataVenda")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("idComprador")
+                        .IsRequired()
+                        .HasColumnType("int");
+
                     b.Property<double>("qtdVendida")
                         .HasMaxLength(255)
                         .HasColumnType("float");
 
                     b.HasKey("idVenda");
 
+                    b.HasIndex("idComprador");
+
                     b.ToTable("Venda");
+                });
+
+            modelBuilder.Entity("SafraVisionAPI.Models.VendaModel", b =>
+                {
+                    b.HasOne("SafraVisionAPI.Models.CompradorModel", "Comprador")
+                        .WithMany()
+                        .HasForeignKey("idComprador")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Comprador");
                 });
 #pragma warning restore 612, 618
         }

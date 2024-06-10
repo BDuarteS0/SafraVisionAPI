@@ -32,15 +32,14 @@ namespace SafraVisionAPI
             });
             builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
             builder.Services.AddScoped<ICompradorRepositorio, CompradorRepositorio>();
+            builder.Services.AddScoped<IVendaRepositorio, VendaRepositorio>();
+            builder.Services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+            app.UseSwagger();
+            app.UseSwaggerUI();
+
 
             app.UseHttpsRedirection();
 
