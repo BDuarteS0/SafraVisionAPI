@@ -7,7 +7,7 @@ namespace SafraVisionAPI.Repositorios.Interfaces
         Task<List<ProdutoModel>> BuscarTodosProdutos();
         Task<ProdutoModel> BuscarProdutoPorId(int idProduto);
         Task<ProdutoModel> InserirProduto(ProdutoModel produto);
-        Task<ProdutoModel> AtualizarProduto(ProdutoModel produto, int id);
-        Task<bool> DeletarProduto(int id);
+        Task<ProdutoModel> AtualizarProduto(ProdutoModel produto, int idProduto);
+        Task<bool> DeletarProduto(int idProduto);
     }
 }

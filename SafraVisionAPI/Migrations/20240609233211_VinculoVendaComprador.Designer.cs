@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SafraVisionAPI.Data;
 
@@ -11,9 +12,10 @@ using SafraVisionAPI.Data;
 namespace SafraVisionAPI.Migrations
 {
     [DbContext(typeof(SafraVisionDBContext))]
-    partial class SafraVisionDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240609233211_VinculoVendaComprador")]
+    partial class VinculoVendaComprador
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -105,12 +107,12 @@ namespace SafraVisionAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idVenda"), 1L, 1);
 
-                    b.Property<DateTime>("dataVenda")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("idComprador")
+                    b.Property<int?>("CompradorId")
                         .IsRequired()
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("dataVenda")
+                        .HasColumnType("datetime2");
 
                     b.Property<double>("qtdVendida")
                         .HasMaxLength(255)
@@ -118,7 +120,7 @@ namespace SafraVisionAPI.Migrations
 
                     b.HasKey("idVenda");
 
-                    b.HasIndex("idComprador");
+                    b.HasIndex("CompradorId");
 
                     b.ToTable("Venda");
                 });
@@ -127,7 +129,7 @@ namespace SafraVisionAPI.Migrations
                 {
                     b.HasOne("SafraVisionAPI.Models.CompradorModel", "Comprador")
                         .WithMany()
-                        .HasForeignKey("idComprador")
+                        .HasForeignKey("CompradorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

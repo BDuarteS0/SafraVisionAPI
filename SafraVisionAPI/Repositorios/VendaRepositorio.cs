@@ -41,6 +41,7 @@ namespace SafraVisionAPI.Repositorios
                 throw new Exception("Usuario não encontrado");
             }
             vendaPorId.qtdVendida = venda.qtdVendida;
+            vendaPorId.idComprador = venda.idComprador;
           
             
             _dbContext.Venda.Update(vendaPorId);

@@ -11,6 +11,8 @@ namespace SafraVisionAPI.Data.Map
             builder.HasKey(x => x.idVenda);
             builder.Property(x => x.qtdVendida).IsRequired().HasMaxLength(255);
             builder.Property(x => x.dataVenda).IsRequired();
+            builder.Property(x => x.idComprador).IsRequired();
+            builder.HasOne(x => x.Comprador).WithMany().HasForeignKey(x => x.idComprador);
         }
     }
 }

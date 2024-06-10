@@ -34,13 +34,33 @@ namespace SafraVisionAPI.Repositorios
 
         public async Task<ProdutoModel> AtualizarProduto(ProdutoModel produto, int idProduto)
         {
-            throw new NotImplementedException();
+            ProdutoModel produtoPorId = await BuscarProdutoPorId(idProduto);
+            if(produtoPorId == null)
+            {
+                throw new Exception("Produto não encontrado");
+            }
+            produtoPorId.nomeProduto = produto.nomeProduto;
+            produtoPorId.descricao = produto.descricao;
+            produtoPorId.preco = produto.preco;
+            produtoPorId.qtdEstoque = produto.qtdEstoque;
+    
+            _dbContext.Produto.Update(produtoPorId);
+            _dbContext.SaveChanges();
+            return produtoPorId;
+      
         }
 
 
-        public Task<bool> DeletarProduto(int id)
+        public async Task<bool> DeletarProduto(int idProduto)
         {
-            throw new NotImplementedException();
+            ProdutoModel produtoPorId = await BuscarProdutoPorId(idProduto);
+            if (produtoPorId == null)
+            {
+                throw new Exception("Produto não encontrado");
+            }
+            _dbContext.Produto.Remove(produtoPorId);
+            _dbContext.SaveChanges();
+            return true;
         }
     }
 }
