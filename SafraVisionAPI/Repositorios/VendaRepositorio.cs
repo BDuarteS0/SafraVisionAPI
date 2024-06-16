@@ -21,7 +21,9 @@ namespace SafraVisionAPI.Repositorios
         //BUSCA E RETORNA APENAS UM USUÁRIO ESPECÍFICO
         public async Task<VendaModel> BuscarVendaPorId(int idVenda)
         {
+#pragma warning disable CS8603 // Possível retorno de referência nula.
             return await _dbContext.Venda.FirstOrDefaultAsync(x => x.idVenda == idVenda);
+#pragma warning restore CS8603 // Possível retorno de referência nula.
         }
 
         //ADICIONA UM NOVO USUÁRIO NO SISTEMA

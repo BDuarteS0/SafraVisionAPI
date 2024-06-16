@@ -20,7 +20,9 @@ namespace SafraVisionAPI.Repositorios
 
         public async Task<ProdutoModel> BuscarProdutoPorId(int idProduto)
         {
-           return await _dbContext.Produto.FirstOrDefaultAsync(x => x.idProduto == idProduto);
+#pragma warning disable CS8603 // Possível retorno de referência nula.
+            return await _dbContext.Produto.FirstOrDefaultAsync(x => x.idProduto == idProduto);
+#pragma warning restore CS8603 // Possível retorno de referência nula.
         }
 
 
