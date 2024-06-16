@@ -16,6 +16,14 @@ namespace SafraVisionAPI.Data
         public DbSet<VendaModel> Venda { get; set; }
         public DbSet<CompradorModel> Comprador { get; set; }
         public DbSet<ProdutoModel> Produto { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("Server=safraserver.database.windows.net;DataBase=DB_SafraVision;User Id=safra-admin;Password=P0o9i8u7!bruno");
+            }
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
          
