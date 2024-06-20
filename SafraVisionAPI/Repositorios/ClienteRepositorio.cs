@@ -19,7 +19,7 @@ namespace SafraVisionAPI.Repositorios
             return cliente;
         }
 
-        public async Task<List<ClienteModel>> BuscarTodosClientees()
+        public async Task<List<ClienteModel>> BuscarTodosClientes()
         {
             return await _dbContext.Cliente.ToListAsync();
         }

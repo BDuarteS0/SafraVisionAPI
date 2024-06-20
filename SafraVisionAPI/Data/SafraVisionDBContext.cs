@@ -21,7 +21,7 @@ namespace SafraVisionAPI.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=safraserver.database.windows.net;DataBase=DB_SafraVision;User Id=safra-admin;Password=P0o9i8u7!bruno");
+                optionsBuilder.UseSqlServer("Server=safraserver.database.windows.net;DataBase=DB_SafraVision1;User Id=safra-admin;Password=P0o9i8u7!bruno");
             }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

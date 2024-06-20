@@ -15,10 +15,10 @@ namespace SafraVisionAPI.Controllers
             _clienteRepositorio = clienteRepositorio;
         }
 
-        [HttpGet("BuscarTodosCommpradores")]
-        public async Task<ActionResult<List<ClienteModel>>> BuscarTodosClientees()
+        [HttpGet("BuscarTodosClientes")]
+        public async Task<ActionResult<List<ClienteModel>>> BuscarTodosClientes()
         {
-            List<ClienteModel> clientes = await _clienteRepositorio.BuscarTodosClientees();
+            List<ClienteModel> clientes = await _clienteRepositorio.BuscarTodosClientes();
             return Ok(clientes);
         }
 
