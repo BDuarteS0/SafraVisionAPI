@@ -9,6 +9,7 @@ namespace SafraVisionAPI.Data.Map
         public void Configure(EntityTypeBuilder<UsuarioModel> builder)
         {
             builder.HasKey(x => x.idUsuario);
+            builder.Property(x => x.nomeUsuario).IsRequired().HasMaxLength(255);
             builder.Property(x => x.email).IsRequired().HasMaxLength(255);
             builder.Property(x => x.senha).IsRequired().HasMaxLength(255);
 
