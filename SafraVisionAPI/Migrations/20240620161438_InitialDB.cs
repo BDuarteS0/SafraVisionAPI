@@ -17,7 +17,7 @@ namespace SafraVisionAPI.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     nomeCliente = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     descricao = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    numeroTelefone = table.Column<int>(type: "int", nullable: false)
+                    numeroTelefone = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false)
                 },
                 constraints: table =>
                 {

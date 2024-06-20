@@ -40,8 +40,10 @@ namespace SafraVisionAPI.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<int>("numeroTelefone")
-                        .HasColumnType("int");
+                    b.Property<string>("numeroTelefone")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
 
                     b.HasKey("idCliente");
 

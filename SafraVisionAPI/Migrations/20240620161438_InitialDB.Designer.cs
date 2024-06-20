@@ -12,7 +12,7 @@ using SafraVisionAPI.Data;
 namespace SafraVisionAPI.Migrations
 {
     [DbContext(typeof(SafraVisionDBContext))]
-    [Migration("20240620040807_InitialDB")]
+    [Migration("20240620161438_InitialDB")]
     partial class InitialDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,8 +42,10 @@ namespace SafraVisionAPI.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<int>("numeroTelefone")
-                        .HasColumnType("int");
+                    b.Property<string>("numeroTelefone")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
 
                     b.HasKey("idCliente");
 

@@ -11,7 +11,7 @@ namespace SafraVisionAPI.Data.Map
             builder.HasKey(x => x.idCliente);
             builder.Property(x => x.nomeCliente).IsRequired().HasMaxLength(255);
             builder.Property(x => x.descricao).IsRequired().HasMaxLength(255);
-            builder.Property(x => x.numeroTelefone).IsRequired();
+            builder.Property(x => x.numeroTelefone).IsRequired().HasMaxLength(15);
         }
     }
 }
