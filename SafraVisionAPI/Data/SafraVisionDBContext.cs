@@ -14,7 +14,7 @@ namespace SafraVisionAPI.Data
 
         public virtual DbSet<UsuarioModel> Usuario { get; set; }
         public virtual DbSet<VendaModel> Venda { get; set; }
-        public virtual DbSet<CompradorModel> Comprador { get; set; }
+        public virtual DbSet<ClienteModel> Cliente { get; set; }
         public virtual DbSet<ProdutoModel> Produto { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -29,7 +29,7 @@ namespace SafraVisionAPI.Data
          
             modelBuilder.ApplyConfiguration(new UsuarioMap());
             modelBuilder.ApplyConfiguration(new VendaMap());
-            modelBuilder.ApplyConfiguration(new CompradorMap());
+            modelBuilder.ApplyConfiguration(new ClienteMap());
             modelBuilder.ApplyConfiguration(new ProdutoMap());
 
             base.OnModelCreating(modelBuilder);

@@ -18,30 +18,30 @@ namespace SafraVisionAPI.Controllers
         [HttpGet("BuscarTodosProdutos")]
         public async Task<ActionResult<List<ProdutoModel>>> BuscarTodosProdutos()
         {
-            List<ProdutoModel> compradores = await _produtoRepositorio.BuscarTodosProdutos();
-            return Ok(compradores);
+            List<ProdutoModel> clientees = await _produtoRepositorio.BuscarTodosProdutos();
+            return Ok(clientees);
         }
 
         [HttpGet("BuscarProdutoPorId")]
         public async Task<ActionResult<ProdutoModel>> BuscarProdutoPorId(int idProduto)
         {
-            ProdutoModel comprador = await _produtoRepositorio.BuscarProdutoPorId(idProduto);
-            return Ok(comprador);
+            ProdutoModel cliente = await _produtoRepositorio.BuscarProdutoPorId(idProduto);
+            return Ok(cliente);
         }
 
         [HttpPost("InserirProduto")]
         public async Task<ActionResult<ProdutoModel>> InserirProduto([FromBody] ProdutoModel produtoModel)
         {
-            ProdutoModel comprador = await _produtoRepositorio.InserirProduto(produtoModel);
-            return Ok(comprador);
+            ProdutoModel cliente = await _produtoRepositorio.InserirProduto(produtoModel);
+            return Ok(cliente);
 
         }
 
         [HttpPut("AtualizarProduto")]
         public async Task<ActionResult<ProdutoModel>> AtualizarProduto([FromBody] ProdutoModel produtoModel, int idProduto)
         {
-            ProdutoModel comprador = await _produtoRepositorio.AtualizarProduto(produtoModel, idProduto);
-            return Ok(comprador);
+            ProdutoModel cliente = await _produtoRepositorio.AtualizarProduto(produtoModel, idProduto);
+            return Ok(cliente);
         }
 
 

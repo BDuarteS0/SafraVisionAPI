@@ -9,10 +9,12 @@ namespace SafraVisionAPI.Data.Map
         public void Configure(EntityTypeBuilder<VendaModel> builder)
         {
             builder.HasKey(x => x.idVenda);
+            builder.Property(x => x.clienteVenda).IsRequired().HasMaxLength(255);
+            builder.Property(x => x.produtoVenda).IsRequired().HasMaxLength(255);
+            builder.Property(x => x.descricaoVenda).IsRequired().HasMaxLength(255);
             builder.Property(x => x.qtdVendida).IsRequired().HasMaxLength(255);
             builder.Property(x => x.dataVenda).IsRequired();
-            builder.Property(x => x.idComprador).IsRequired();
-            builder.HasOne(x => x.Comprador).WithMany().HasForeignKey(x => x.idComprador);
+            
         }
     }
 }

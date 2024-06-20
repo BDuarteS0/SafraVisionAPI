@@ -7,48 +7,48 @@ namespace SafraVisionAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CompradorController : ControllerBase
+    public class ClienteController : ControllerBase
     {
-        private readonly ICompradorRepositorio _compradorRepositorio;
-        public CompradorController(ICompradorRepositorio compradorRepositorio)
+        private readonly IClienteRepositorio _clienteRepositorio;
+        public ClienteController(IClienteRepositorio clienteRepositorio)
         {
-            _compradorRepositorio = compradorRepositorio;
+            _clienteRepositorio = clienteRepositorio;
         }
 
         [HttpGet("BuscarTodosCommpradores")]
-        public async Task<ActionResult<List<CompradorModel>>> BuscarTodosCompradores()
+        public async Task<ActionResult<List<ClienteModel>>> BuscarTodosClientees()
         {
-            List<CompradorModel> compradores = await _compradorRepositorio.BuscarTodosCompradores();
-            return Ok(compradores);
+            List<ClienteModel> clientes = await _clienteRepositorio.BuscarTodosClientees();
+            return Ok(clientes);
         }
 
-        [HttpGet("BuscarCompradorPorId")]
-        public async Task<ActionResult<CompradorModel>> BuscarCompradorPorId(int idComprador)
+        [HttpGet("BuscarClientePorId")]
+        public async Task<ActionResult<ClienteModel>> BuscarClientePorId(int idCliente)
         {
-            CompradorModel comprador = await _compradorRepositorio.BuscarCompradorPorId(idComprador);
-            return Ok(comprador);
+            ClienteModel cliente = await _clienteRepositorio.BuscarClientePorId(idCliente);
+            return Ok(cliente);
         }
 
-        [HttpPost("InserirComprador")]
-        public async Task<ActionResult<CompradorModel>> InserirComprador([FromBody]CompradorModel compradorModel)
+        [HttpPost("InserirCliente")]
+        public async Task<ActionResult<ClienteModel>> InserirCliente([FromBody]ClienteModel clienteModel)
         {
-            CompradorModel comprador = await _compradorRepositorio.InserirComprador(compradorModel);
-            return Ok(comprador);
+            ClienteModel cliente = await _clienteRepositorio.InserirCliente(clienteModel);
+            return Ok(cliente);
         
         }
 
-        [HttpPut("AtualizarComprador")]
-        public async Task<ActionResult<CompradorModel>> AtualizarComprador([FromBody]CompradorModel compradorModel, int idComprador)
+        [HttpPut("AtualizarCliente")]
+        public async Task<ActionResult<ClienteModel>> AtualizarCliente([FromBody]ClienteModel clienteModel, int idCliente)
         {
-            CompradorModel comprador = await _compradorRepositorio.AtualizarComprador(compradorModel, idComprador);
-            return Ok(comprador);
+            ClienteModel cliente = await _clienteRepositorio.AtualizarCliente(clienteModel, idCliente);
+            return Ok(cliente);
         }
 
 
-        [HttpDelete("DeletarComprador")]
-        public async Task<ActionResult<CompradorModel>> DeletarComprador(int idComprador)
+        [HttpDelete("DeletarCliente")]
+        public async Task<ActionResult<ClienteModel>> DeletarCliente(int idCliente)
         {
-            bool Deletado = await _compradorRepositorio.DeletarComprador(idComprador);
+            bool Deletado = await _clienteRepositorio.DeletarCliente(idCliente);
             return Ok(Deletado);
         }
     } 

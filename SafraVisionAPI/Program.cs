@@ -7,6 +7,7 @@ using SafraVisionAPI.Data;
 using SafraVisionAPI.Repositorios;
 using SafraVisionAPI.Repositorios.Interfaces;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace SafraVisionAPI
 {
@@ -19,7 +20,10 @@ namespace SafraVisionAPI
             
             // Add services to the container.
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers().AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            });
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -31,7 +35,7 @@ namespace SafraVisionAPI
 
             });
             builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
-            builder.Services.AddScoped<ICompradorRepositorio, CompradorRepositorio>();
+            builder.Services.AddScoped<IClienteRepositorio, ClienteRepositorio>();
             builder.Services.AddScoped<IVendaRepositorio, VendaRepositorio>();
             builder.Services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
 
